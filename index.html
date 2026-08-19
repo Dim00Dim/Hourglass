@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Clessidra — Cosa avresti potuto fare</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,500;9..144,600&family=Work+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@500;600&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <div class="app">
+
+    <!-- SELETTORE LINGUA -->
+    <div class="lang-switch" role="group" aria-label="Lingua / Language">
+      <button class="lang-btn" data-lang="it" id="btn-lang-it">IT</button>
+      <button class="lang-btn" data-lang="en" id="btn-lang-en">EN</button>
+    </div>
+
+    <!-- HEADER: titolo e tagline -->
+    <header class="hero">
+      <p class="eyebrow" data-i18n-it="quanto tempo, cosa costruisci" data-i18n-en="how much time, what you build"></p>
+      <h1 class="title" data-i18n-it="Clessidra" data-i18n-en="Hourglass"></h1>
+      <p class="subtitle" data-i18n-it="Ogni minuto davanti allo schermo è un minuto che potevi passare altrove. Guarda cosa." data-i18n-en="Every minute on screen is a minute you could have spent elsewhere. See what."></p>
+    </header>
+
+    <!-- STATISTICHE UTENTE: punti e streak (gamification) -->
+    <section class="stats-bar" aria-label="Le tue statistiche">
+      <div class="stat">
+        <span class="stat-value" id="stat-points">0</span>
+        <span class="stat-label" data-i18n-it="minuti consapevoli" data-i18n-en="mindful minutes"></span>
+      </div>
+      <div class="stat-divider"></div>
+      <div class="stat">
+        <span class="stat-value" id="stat-streak">0</span>
+        <span class="stat-label" data-i18n-it="giorni di fila" data-i18n-en="day streak"></span>
+      </div>
+    </section>
+
+    <!-- SELETTORE MODALITÀ: timer live oppure inserimento manuale -->
+    <nav class="mode-switch" role="tablist" aria-label="Modalità di misurazione">
+      <button class="mode-btn is-active" id="btn-mode-timer" role="tab" aria-selected="true"
+        data-i18n-it="Avvia timer" data-i18n-en="Start timer"></button>
+      <button class="mode-btn" id="btn-mode-manual" role="tab" aria-selected="false"
+        data-i18n-it="Inserisci minuti" data-i18n-en="Enter minutes"></button>
+    </nav>
+
+    <!-- ELEMENTO SIGNATURE: l'anello-clessidra con la sabbia che cade -->
+    <section class="hourglass-panel">
+      <div class="hourglass-ring" id="hourglass-ring">
+        <svg viewBox="0 0 200 200" class="ring-svg" aria-hidden="true">
+          <circle class="ring-track" cx="100" cy="100" r="88" />
+          <circle class="ring-fill" id="ring-fill" cx="100" cy="100" r="88" />
+        </svg>
+
+        <div class="sand-grains" id="sand-grains" aria-hidden="true">
+          <span></span><span></span><span></span><span></span><span></span>
+        </div>
+
+        <div class="ring-center">
+          <span class="ring-time" id="display-time">00:00</span>
+          <span class="ring-unit" data-i18n-it="min : sec" data-i18n-en="min : sec"></span>
+        </div>
+      </div>
+
+      <!-- Vista TIMER -->
+      <div class="panel-view is-active" id="view-timer">
+        <div class="controls">
+          <button class="btn btn-primary" id="btn-start" data-i18n-it="Avvia" data-i18n-en="Start"></button>
+          <button class="btn btn-secondary" id="btn-pause" disabled data-i18n-it="Pausa" data-i18n-en="Pause"></button>
+          <button class="btn btn-ghost" id="btn-reset" disabled data-i18n-it="Azzera" data-i18n-en="Reset"></button>
+        </div>
+      </div>
+
+      <!-- Vista MANUALE -->
+      <div class="panel-view" id="view-manual">
+        <label class="manual-label" for="manual-input"
+          data-i18n-it="Quanti minuti hai già passato davanti allo schermo?"
+          data-i18n-en="How many minutes have you already spent on screen?"></label>
+        <div class="manual-row">
+          <input type="number" id="manual-input" class="manual-input" min="1" step="1" />
+          <button class="btn btn-primary" id="btn-manual-submit" data-i18n-it="Calcola" data-i18n-en="Calculate"></button>
+        </div>
+      </div>
+    </section>
+
+    <!-- RISULTATI -->
+    <section class="results" id="results" hidden>
+      <h2 class="results-title" id="results-title"></h2>
+      <ul class="results-list" id="results-list"></ul>
+      <button class="btn btn-ghost btn-small" id="btn-dismiss" data-i18n-it="Chiudi" data-i18n-en="Close"></button>
+    </section>
+
+    <footer class="footer">
+      <p data-i18n-it="I dati restano solo sul tuo dispositivo — nessun account, nessun server."
+         data-i18n-en="Your data stays only on your device — no account, no server."></p>
+    </footer>
+
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
